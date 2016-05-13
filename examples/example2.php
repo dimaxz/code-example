@@ -76,7 +76,7 @@ class UserService {
 	 */
 	public function getByid($id) {
 
-		if ($User = $this->UserRepository->findById($id)) {
+		if (!$User = $this->UserRepository->findById($id)) {
 			throw new Exception('User not find');
 		}
 		return $User;
