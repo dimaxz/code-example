@@ -1,1 +1,1 @@
-# ddd-tests
+# examples
