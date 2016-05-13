@@ -3,7 +3,7 @@
 /**
  * Пример работы контролера работающего с моделью через сервис и репозиторий с использованием контейнера
  */
-class UserController {
+class UserController extends AplicationController {
 
 	/**
 	 * ServiceProvider
@@ -16,9 +16,12 @@ class UserController {
 	 * @var type 
 	 */
 	protected $View;
+	
+	protected $conteiner;
 
-	function __construct(\League\Container\Container $conteiner) {
-		$this->UserService = $conteiner->get('UserService');
+	function __construct(\League\Container\Container $conteiner,View $View) {
+		parent::__construct($conteiner,$View);
+		$this->UserService = $this->conteiner->get('UserService');
 	}
 
 	/**
