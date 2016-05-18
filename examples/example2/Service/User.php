@@ -41,7 +41,7 @@ class User {
 	 * @throws Exception
 	 */
 	public function save(Model\User $User) {
-		if (!$this->userRepository->save()) {
+		if (!$this->userRepository->save($User)) {
 			throw new Exception('User not save');
 		}
 		return true;
