@@ -35,7 +35,7 @@ class User {
 	 * @param type $Request
 	 * @return type
 	 */
-	function getUsers(Request $Request) {
+	function userInfo(Request $Request) {
 
 		if ($id = $Request->get('id')) {
 
