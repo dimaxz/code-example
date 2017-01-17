@@ -1,50 +1,23 @@
 <?php
 
-/**
- * Пример работы контролера работающего напрямую с моделемя
- */
-class UserController {
+include_once __DIR__.'../../vendor/autoload.php';
 
-	/**
-	 * ServiceProvider
-	 * @var type 
-	 */
-	protected $conteiner;
+$storage = new \Example\MemoryStorage();
+$storage->persist([
+    'name'  => 'test',
+    'email' =>	'test@email.ru',
+    'code'  =>  '123',
+    'id'    =>	1
+]);
+$storage->persist([
+    'name'  => 'dima',
+    'email' =>	'dim@email.ru',
+    'code'  =>  'sabhj637',
+    'id'    =>	2
+]);
 
-	/**
-	 * Library for views
-	 * @var type 
-	 */
-	protected $View;
+$userRepo = new Example\User\UserRepository(new \Example\User\UserMapper,$storage);
 
-	function getUsers($Request) {
+$User = $userRepo->findById(2);
 
-
-		if ($id = $Request->get('id')) {
-
-			$User = UserQuery::create()->findByPk($id);
-
-			return $this->View('user_info', $User->toArray());
-		}
-	}
-
-}
-
-/**
- * UserQuery класс для получения User из бд
- * 
- * сгенерирован Propel
- * @method     UserQuery findByPk($pk) 
- * @method     ChildUser[]|ObjectCollection find(ConnectionInterface $con = null) 
- */
-class UserQuery extends Order\Base\UserQuery {}
-
-/**
- * Модель
- * 
- * сгенерирован Propel
- * @method  User save() 
- * @method  User update() 
- * @method  User delete() 
- */
-class User extends \User\Base\Order{}
+dump($User);
