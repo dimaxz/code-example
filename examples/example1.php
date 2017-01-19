@@ -1,15 +1,13 @@
 <?php
 
-include_once __DIR__.'../../vendor/autoload.php';
-
-$storage = new \Example\MemoryStorage();
-$storage->persist([
+$storage = new \DataMapper\Storage\MemoryStorage();
+$storage->insert([
     'name'  => 'test',
     'email' =>	'test@email.ru',
     'code'  =>  '123',
     'id'    =>	1
 ]);
-$storage->persist([
+$storage->insert([
     'name'  => 'dima',
     'email' =>	'dim@email.ru',
     'code'  =>  'sabhj637',

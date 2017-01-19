@@ -10,21 +10,24 @@ class UserRepository{
 
     protected $mapper;
 
-    protected $adapter;
+    protected $storage;
 
     function __construct(\Example\AbstractDataMapper $mapper,
-			 \Example\MemoryStorage $storage){
-	$this->mapper	 = $mapper;
-	$this->adapter	 = $storage;
+			 \DataMapper\Storage\StorageDAO $storage){
+		$this->mapper	 = $mapper;
+		$this->storage	 = $storage;
     }
 
     public function findById($id){
-	$arrayData = $this->adapter->retrieve($id);
-	if(is_null($arrayData)){
-	    throw new \InvalidArgumentException(sprintf('Post with ID %d does not exist',
-						 $id));
-	}
-	return $this->mapper->assign(User::fromState($arrayData), $arrayData);
+		$arrayData = $this->storage->fetchRow($id);
+		if (is_null($arrayData)) {
+			throw new \InvalidArgumentException(sprintf('User with ID %d does not exist',$id));
+		}
+		return $this->build($row);    	
     }
+    
+	protected function build($row){
+		return $this->mapper->assign(User::fromState($row), $row);
+	}    
     
 }

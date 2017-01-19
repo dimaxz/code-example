@@ -9,13 +9,11 @@ namespace Example\User;
 class UserMapper extends \Example\AbstractDataMapper{
 
     public function __construct(){
-	$this->setMap(
-		array(
-		    'id'	 => 'id',
-		    'name'	 => 'firstName',
-		    'email'	 => 'email',
-		    'code'	 => 'password'
-		)
-	);
+	$this
+		->addMap('id')
+		->addMap('name','firstName')
+		->addMap('email')
+		->addMap('code','password')
+	;
     }
 }
