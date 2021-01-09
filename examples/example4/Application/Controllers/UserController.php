@@ -4,9 +4,9 @@
 namespace Application\Controllers;
 
 
-use Application\UseCases\CreateUser\CreateUserCommand;
-use Application\UseCases\CreateUser\UserRequest;
-use Application\UseCases\CreateUser\UserResult;
+use Application\Commands\Office\CreateUser\CreateUserCommand;
+use Application\Commands\Office\CreateUser\UserRequest;
+use Application\Commands\Office\CreateUser\UserResult;
 use Domain\User\Exceptions\UserNotFoundException;
 use Domain\User\UserService;
 use Infrastructure\JsonResponse;

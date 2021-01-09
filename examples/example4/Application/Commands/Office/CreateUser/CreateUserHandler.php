@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Application\UseCases\CreateUser;
+namespace Application\Commands\Office\CreateUser;
 
 
 use Domain\User\UserEntity;
