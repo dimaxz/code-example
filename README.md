@@ -14,14 +14,30 @@
 
 Пример луковой архитектуры с разделением на Application, Domain, Infrastructure
 
-  src
-    | Application
-    |   | Commands
+  src/
+    | Application/
+    |   | Commands/
+    |   |   | Registration/
+    |   |   |   | RegistrationManager/
+    |   |   |   | RegistrationUser/
+    |   |   |   |    | RegistrationUserCommand.php
+    |   |   |   |    | RegistrationUserHandler.php
     |   | Controllers
-    | Domain
-    |   | User
+        |   |   | UserController.php
+    | Domain/
+    |   | User/
+    |   |   | Contracts/
+    |   |   |   | UserCriteriaInterface.php
+    |   |   |   | UserRepositoryInterface.php       
+    |   |   | Exceptions/
+    |   |   | UserCollection.php
+    |   |   | UserEntity.php
+    |   |   | UserService.php
     | Infrastructure
     |   | Repositories
+    |   |   | User/
+    |   |   |   | UserCriteria.php
+    |   |   |   | UserRepository.php
     
   или
   

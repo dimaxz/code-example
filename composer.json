@@ -1,0 +1,15 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Application\\": "src/example4/Application",
+      "Domain\\": "src/example4/Domain",
+      "Infrastructure\\": "src/example4/Infrastructure"
+    }
+  },
+  "require": {
+    "php": ">=7.2",
+    "phpdocumentor/phpdocumentor": "*",
+    "dimaxz/repository": "*",
+    "phpmetrics/phpmetrics": "*"
+  }
+}
