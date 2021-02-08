@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Domain\User;
+namespace Demo4\Domain\User;
 
 
 class UserCollection

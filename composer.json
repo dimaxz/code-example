@@ -1,14 +1,16 @@
 {
   "autoload": {
     "psr-4": {
-      "Application\\": "src/example4/Application",
-      "Domain\\": "src/example4/Domain",
-      "Infrastructure\\": "src/example4/Infrastructure"
+      "Demo4\\Application\\": "src/example4/Application",
+      "Demo4\\Domain\\": "src/example4/Domain",
+      "Demo4\\Infrastructure\\": "src/example4/Infrastructure"
     }
   },
   "require": {
     "php": ">=7.2",
+    "spaceonfire/command-bus": "^1.2.0",
     "phpdocumentor/phpdocumentor": "*",
+    "psr-php7/log": "1.*",
     "dimaxz/repository": "*",
     "phpmetrics/phpmetrics": "*"
   }

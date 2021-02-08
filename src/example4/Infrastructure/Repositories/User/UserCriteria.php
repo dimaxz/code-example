@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Infrastructure\Repositories\User;
+namespace Demo4\Infrastructure\Repositories\User;
 
 
-use Domain\User\Contracts\UserCriteriaInterface;
+use Demo4\Domain\User\Contracts\UserCriteriaInterface;
 
 class UserCriteria implements UserCriteriaInterface
 {

@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Domain\User\Contracts;
+namespace Demo4\Domain\User\Contracts;
 
-use Domain\User\UserCollection;
-use Domain\User\UserEntity;
+use Demo4\Domain\User\UserCollection;
+use Demo4\Domain\User\UserEntity;
 
 interface UserRepositoryInterface
 {
@@ -19,4 +19,6 @@ interface UserRepositoryInterface
      * @return UserCollection
      */
     public function findByCriteria(UserCriteriaInterface $criteria):UserCollection;
+
+    public function save(UserEntity $entity): void ;
 }

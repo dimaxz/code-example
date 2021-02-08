@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Application\Commands\Office\RegistrationUser;
+namespace Demo4\Application\Commands\Registration\RegistrationUser;
 
 
 class RegistrationUserException extends \RuntimeException

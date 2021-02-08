@@ -1,38 +1,82 @@
 <?php
 
 
-namespace Application\Commands\Office\RegistrationUser;
+namespace Demo4\Application\Commands\Registration\RegistrationUser;
 
 
 class RegistrationUserCommand
 {
 
-    protected $userRequest;
-
-    protected $userResult;
-
-    public function __construct(UserRequest $userRequest, UserResult $userResult)
-    {
-        $this->userRequest = $userRequest;
-        $this->userResult = $userResult;
-    }
+    /**
+     * @var string
+     */
+    protected $name;
 
     /**
-     * @return UserRequest
+     * @var string
      */
-    public function getUserRequest(): UserRequest
-    {
-        return $this->userRequest;
-    }
+    protected $email;
 
 
     /**
-     * @return UserResult
+     * @var int
      */
-    public function getUserResult(): UserResult
+    protected $sourceId;
+
+    /**
+     * @return string
+     */
+    public function getName(): string
     {
-        return $this->userResult;
+        return $this->name;
     }
+
+    /**
+     * @param string $name
+     * @return RegistrationUserCommand
+     */
+    public function setName(string $name): RegistrationUserCommand
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     * @return RegistrationUserCommand
+     */
+    public function setEmail(string $email): RegistrationUserCommand
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSourceId(): int
+    {
+        return $this->sourceId;
+    }
+
+    /**
+     * @param int $sourceId
+     * @return RegistrationUserCommand
+     */
+    public function setSourceId(int $sourceId): RegistrationUserCommand
+    {
+        $this->sourceId = $sourceId;
+        return $this;
+    }
+
 
 
 }

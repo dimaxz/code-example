@@ -1,19 +1,20 @@
 <?php
 
 
-namespace Application\Commands\Office\RegistrationUser;
+namespace Demo4\Application\Commands\Registration\RegistrationUser;
 
 
+use Demo4\Domain\User\Contracts\UserRepositoryInterface;
 use Domain\User\UserEntity;
 use Domain\User\UserService;
 
-class CreateUserHandler
+class RegistrationUserHandler
 {
-    protected $userService;
+    protected $userRepository;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserRepositoryInterface $userRepository)
     {
-        $this->userService = $userService;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -27,7 +28,7 @@ class CreateUserHandler
         $result = $command->getUserResult();
 
         $result->setSourceId(
-            $this->userService->create(
+            $this->userRepository->save(
                 (new UserEntity())
                     ->setName($request->getName())
                     ->setEmail($request->getEmail())

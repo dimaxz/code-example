@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Domain\User\Contracts;
+namespace Demo4\Domain\User\Contracts;
 
 
 

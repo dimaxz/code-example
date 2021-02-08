@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Infrastructure;
+namespace Demo4\Infrastructure;
 
 
 class JsonResponse

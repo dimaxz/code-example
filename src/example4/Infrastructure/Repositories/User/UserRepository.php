@@ -1,24 +1,30 @@
 <?php
 
 
-namespace Infrastructure\Repositories\User;
+namespace Demo4\Infrastructure\Repositories\User;
 
 
-use Domain\User\Contracts\UserCriteriaInterface;
-use Domain\User\Contracts\UserRepositoryInterface;
-use Domain\User\UserCollection;
-use Domain\User\UserEntity;
+use Demo4\Domain\User\Contracts\UserCriteriaInterface;
+use Demo4\Domain\User\Contracts\UserRepositoryInterface;
+use Demo4\Domain\User\UserCollection;
+use Demo4\Domain\User\UserEntity;
 
 class UserRepository implements UserRepositoryInterface
 {
     public function findById(int $id): ?UserEntity
     {
-        // TODO: Implement findById() method.
+        return null;
     }
 
     public function findByCriteria(UserCriteriaInterface $criteria): UserCollection
     {
-        // TODO: Implement findByCriteria() method.
+        return new UserCollection();
     }
+
+    public function save(UserEntity $entity): void
+    {
+        // TODO: Implement save() method.
+    }
+
 
 }

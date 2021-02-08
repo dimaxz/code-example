@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Domain\User\Exceptions;
+namespace Demo4\Domain\User\Exceptions;
 
 
 class UserNotFoundException extends \RuntimeException
