@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__. '../../../vendor/autoload.php';
 
-$controller = new \Demo4\Infrastructure\Controllers\UserController(
+$controller = new \Demo4\Presentation\Controllers\UserController(
         new \Demo4\Infrastructure\Repositories\User\UserRepository(),
     new spaceonfire\CommandBus\CommandBus(
         new \spaceonfire\CommandBus\Mapping\MapByStaticList([

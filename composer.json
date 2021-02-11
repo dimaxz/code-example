@@ -1,9 +1,8 @@
 {
   "autoload": {
     "psr-4": {
-      "Demo4\\Application\\": "src/example4/Application",
-      "Demo4\\Domain\\": "src/example4/Domain",
-      "Demo4\\Infrastructure\\": "src/example4/Infrastructure"
+      "Demo4\\": "src/example4/",
+      "Demo5\\": "src/example5/"
     }
   },
   "require": {
