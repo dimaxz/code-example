@@ -52,7 +52,7 @@ class UserController implements LoggerAwareInterface
         $command = (new RegistrationUserCommand())->setEmail($args['email'])->setName($args['name']);
 
         try{
-            $this->userRepository->handle($command);
+            $this->commandBus->handle($command);
         }
         catch (RegistrationUserException $ex){
             return new JsonResponse([
