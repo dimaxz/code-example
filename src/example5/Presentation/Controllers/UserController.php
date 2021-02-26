@@ -113,4 +113,27 @@ class UserController implements LoggerAwareInterface
             'sourceId' => $id,
         ], 200);
     }
+
+    /**
+     * Реализация изменения состояния через сервис-фасад + DTO
+     * @param array $args
+     * @return JsonResponse
+     */
+    public function create4(array $args): JsonResponse
+    {
+
+        try {
+
+            $id = $this->officeService->registerUser(new UserRequest($args['email'], $args['name']));
+
+        } catch (RegistrationUserException $ex) {
+            return new JsonResponse([
+                'error' => 'not create user'
+            ], 500);
+        }
+
+        return new JsonResponse([
+            'sourceId' => $id,
+        ], 200);
+    }
 }
