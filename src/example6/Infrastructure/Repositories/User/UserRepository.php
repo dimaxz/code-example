@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Demo5\Infrastructure\Repositories\User;
+namespace Demo6\Infrastructure\Repositories\User;
 
 
-use Demo4\Domain\User\Contracts\UserCriteriaInterface;
-use Demo4\Domain\User\Contracts\UserRepositoryInterface;
-use Demo4\Domain\User\UserCollection;
-use Demo4\Domain\User\UserEntity;
+use Demo6\Domain\User\Contracts\UserCriteriaInterface;
+use Demo6\Domain\User\Contracts\UserRepositoryInterface;
+use Demo6\Domain\User\UserCollection;
+use Demo6\Domain\User\UserEntity;
 
 class UserRepository implements UserRepositoryInterface
 {

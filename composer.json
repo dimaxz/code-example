@@ -2,7 +2,8 @@
   "autoload": {
     "psr-4": {
       "Demo4\\": "src/example4/",
-      "Demo5\\": "src/example5/"
+      "Demo5\\": "src/example5/",
+      "Demo6\\": "src/example6/"
     }
   },
   "require": {

@@ -30,6 +30,7 @@ class UserController implements LoggerAwareInterface
         $this->commandBus = $commandBus;
     }
 
+
     /**
      * @param int $id
      * @return JsonResponse

@@ -14,14 +14,17 @@ class OfficeService
      * @var UserRepository
      */
     protected $userRepository;
+    protected $authDriver;
 
     /**
      * OfficeService constructor.
      * @param UserRepository $userRepository
+     * @param Auth $authDriver
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, Auth $authDriver)
     {
         $this->userRepository = $userRepository;
+        $this->authDriver = $authDriver;
     }
 
     /**
@@ -30,7 +33,11 @@ class OfficeService
      */
     public function getUserById(int $id): ?UserEntity
     {
-        return $this->userRepository->findById($id);
+        if (!$user = $this->userRepository->findById($id)){
+            throw new UserNotFound('user not found by id ' . $id);
+        }
+
+        return $user;
     }
 
     /**
@@ -38,6 +45,12 @@ class OfficeService
      */
     public function getCurrentUser(): ?UserEntity
     {
-        return $this->userRepository->findById(1);
+        $data = $this->authDriver->getAuthUser();
+
+        if (!$user = $this->userRepository->findById($data['user_id'])){
+            throw new UserNotFound('current user not found');
+        }
+
+        return $user;
     }
 }
