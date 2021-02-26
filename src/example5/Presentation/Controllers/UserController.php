@@ -33,7 +33,7 @@ class UserController implements LoggerAwareInterface
     public function show(int $id): JsonResponse
     {
 
-        if(!$user = $this->officeService->getUserById($id)){
+        if (!$user = $this->officeService->getUserById($id)) {
             return new JsonResponse([], 404);
         }
 
@@ -44,6 +44,8 @@ class UserController implements LoggerAwareInterface
     }
 
     /**
+     * Реализация изменения состояния через commandBus
+     * @param array $args
      * @return JsonResponse
      */
     public function create(array $args): JsonResponse
@@ -51,10 +53,9 @@ class UserController implements LoggerAwareInterface
 
         $command = (new RegistrationUserCommand())->setEmail($args['email'])->setName($args['name']);
 
-        try{
+        try {
             $this->commandBus->handle($command);
-        }
-        catch (RegistrationUserException $ex){
+        } catch (RegistrationUserException $ex) {
             return new JsonResponse([
                 'error' => 'not create user'
             ], 500);
@@ -62,6 +63,54 @@ class UserController implements LoggerAwareInterface
 
         return new JsonResponse([
             'sourceId' => $command->getSourceId(),
+        ], 200);
+    }
+
+    /**
+     * Реализация изменения состояния через объект-агрегат
+     * @param array $args
+     * @return JsonResponse
+     */
+    public function create2(array $args): JsonResponse
+    {
+
+        $office = $this->officeService->getCurrentOffice();
+
+        try {
+
+            $id = $office->registerUser($args['email'], $args['name']);
+
+        } catch (RegistrationUserException $ex) {
+            return new JsonResponse([
+                'error' => 'not create user'
+            ], 500);
+        }
+
+        return new JsonResponse([
+            'sourceId' => $id,
+        ], 200);
+    }
+
+    /**
+     * Реализация изменения состояния через сервис-фасад
+     * @param array $args
+     * @return JsonResponse
+     */
+    public function create3(array $args): JsonResponse
+    {
+
+        try {
+
+            $id = $this->officeService->registerUser($args['email'], $args['name']);
+
+        } catch (RegistrationUserException $ex) {
+            return new JsonResponse([
+                'error' => 'not create user'
+            ], 500);
+        }
+
+        return new JsonResponse([
+            'sourceId' => $id,
         ], 200);
     }
 }
