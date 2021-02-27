@@ -4,12 +4,14 @@
 namespace Demo5\Application\Office;
 
 
+use Demo5\Application\Office\Contracts\OfficeServiceInterface;
+use Demo5\Application\Office\Contracts\RegistrationUserInterface;
 use Demo5\Domain\User\UserEntity;
 use Demo5\Infrastructure\Repositories\User\UserRepository;
 use League\Tactician\Logger\Tests\Fixtures\RegisterUserCommand;
 use spaceonfire\CommandBus\CommandBus;
 
-class OfficeService
+class OfficeService implements OfficeServiceInterface
 {
 
     /**
@@ -60,10 +62,10 @@ class OfficeService
     }
 
     /**
-     * @param RegisterUserCommand $command
+     * @param RegistrationUserInterface $command
      * @return int
      */
-    public function registerUser(RegisterUserCommand $command): int
+    public function registerUser(RegistrationUserInterface $command): int
     {
         $this->commandBus->handle($command);
         //..register event

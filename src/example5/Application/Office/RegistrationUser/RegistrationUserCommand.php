@@ -4,7 +4,9 @@
 namespace Demo4\Application\Commands\Registration\RegistrationUser;
 
 
-class RegistrationUserCommand
+use Demo5\Application\Office\Contracts\RegistrationUserInterface;
+
+class RegistrationUserCommand implements RegistrationUserInterface
 {
 
     /**
@@ -76,7 +78,6 @@ class RegistrationUserCommand
         $this->sourceId = $sourceId;
         return $this;
     }
-
 
 
 }
