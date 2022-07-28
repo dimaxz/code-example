@@ -1,17 +1,13 @@
 {
   "autoload": {
     "psr-4": {
-      "Demo4\\": "src/example4/",
-      "Demo5\\": "src/example5/",
-      "Demo6\\": "src/example6/"
+      "Demo\\": "src/example6/"
     }
   },
   "require": {
     "php": ">=7.2",
-    "spaceonfire/command-bus": "^1.2.0",
-    "phpdocumentor/phpdocumentor": "*",
-    "psr-php7/log": "1.*",
-    "dimaxz/repository": "*",
-    "phpmetrics/phpmetrics": "*"
+    "bornfreee/tactician-domain-events": "*",
+    "league/tactician-command-events": "*",
+    "symfony/var-dumper": "5.*"
   }
 }

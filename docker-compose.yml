@@ -1,0 +1,47 @@
+version: '3'
+
+# Создаем общую сеть deafult для всех контейнеров
+networks:
+  default:
+    driver: bridge
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    # Подключаем к общей сети с другими контейнерами
+    networks:
+      - default
+    # Запускаем только после db
+    depends_on:
+      - db
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/sites-enabled/default
+      - ./:/home/apps/site
+      - ~/.ssh/id_rsa:/home/apps/.ssh/id_rsa
+      - ./docker/php/user.ini:/etc/php/7.2/custom.d/user.ini
+    environment:
+        PHP_INI_SCAN_DIR: "/etc/php/7.2/custom.d/"
+    ports:
+      - "8080:80"
+  # Контейнер с базой данных
+  db:
+    image: mysql:5.6.51
+    # Подключаем к общей сети с другими контейнерами
+    networks:
+      - default
+    # Показываем наружу порт
+    ports:
+      - "3337:3306"
+    # Задаем параметры для инициализации БД
+    environment:
+      # Пароль к БД
+      MYSQL_ROOT_PASSWORD: root
+      # Создаваемая по умолчанию бд
+      MYSQL_DATABASE: db
+    # Линкуем внешнюю папку для хранения БД
+    volumes:
+      - "mysql-data:/var/lib/mysql:rw"
+volumes:
+  mysql-data:
