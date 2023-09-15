@@ -13,9 +13,9 @@
     "symfony/validator" : "*",
     "filp/whoops": "*",
     "vlucas/phpdotenv": "*",
-    "bornfreee/tactician-domain-events": "*",
-    "league/tactician-command-events": "*",
+    "league/fractal": "^0.19.2",
     "symfony/var-dumper": "*",
-    "twig/twig": "^3.7"
+    "twig/twig": "^3.7",
+    "propel/propel": "2.0.0-beta2"
   }
 }

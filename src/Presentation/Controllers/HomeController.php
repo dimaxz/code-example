@@ -7,7 +7,7 @@ class HomeController extends BaseController
 
     public function index(){
 
-        dd('stop');
+        return $this->render('home');
     }
 
 }

@@ -12,8 +12,9 @@ abstract class BaseController
     {
     }
 
-    protected function render(string $view, array $data = []){
+    protected function render(string $view, array $data = []): string
+    {
 
-        return $this->twig->render($view, $data);
+        return $this->twig->render($view . '.twig', $data);
     }
 }

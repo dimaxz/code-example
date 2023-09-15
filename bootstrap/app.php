@@ -42,7 +42,7 @@ if (getenv('MODE') === 'dev') {
 $whoops->register();
 
 //Propel2 config
-require_once __DIR__ . '/database.php';
+require_once __DIR__ . '/config.php';
 
 require_once __DIR__ . '/container.php';
 
@@ -79,14 +79,19 @@ switch ($route_info[0]) {
         $vars = $route_info[2];
         $object = $container->get($class_name);
 
-        $response = $object->$method($vars);
-        if ($response instanceof Response) {
+        $result = $object->$method($vars);
+        if ($result instanceof Response) {
+            $response = $result;
             $response->prepare(Request::createFromGlobals());
-
         }
+        else{
+            $response = new Response($result);
+        }
+
         break;
 }
 
 if($response){
+
     $response->send();
 }

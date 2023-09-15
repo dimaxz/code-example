@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default"
+          identifierQuoting="true">
+
+  <table name="travelers" phpName="Traveler" namespace="Traveler\Infrastructure\Models\Traveler" package="Traveler">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="255"/>
+
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+
+  <table name="cities" idMethod="native"  phpName="City" namespace="Traveler\Infrastructure\Models\City" package="City">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="255"/>
+
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+
+  <table name="sights" idMethod="native"  phpName="Sight" namespace="Traveler\Infrastructure\Models\Sight" package="Sight">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="255"/>
+    <column name="remoteness" phpName="Remoteness" type="DECIMAL" size="19" scale="2"/>
+
+    <column name="city_id" phpName="cityId" type="INTEGER" primaryKey="true" required="true"/>
+    <foreign-key foreignTable="cities" phpName="City">
+      <reference local="city_id" foreign="id"/>
+    </foreign-key>
+
+    <unique name="IDX__name_city_id">
+      <unique-column name="name"/>
+      <unique-column name="city_id"/>
+    </unique>
+
+
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+
+  <table name="travelers_cities" isCrossRef="true"  idMethod="native" phpName="TravelersCitiesRel"  namespace="Traveler\Infrastructure\Models\TravelersCitiesRel" package="TravelersCitiesRel" >
+    <column name="traveler_id" type="INTEGER" primaryKey="true" />
+    <foreign-key foreignTable="travelers">
+      <reference local="traveler_id" foreign="id"/>
+    </foreign-key>
+    <column name="city_id" type="INTEGER" primaryKey="true" />
+    <foreign-key foreignTable="cities">
+      <reference local="city_id" foreign="id"/>
+    </foreign-key>
+  </table>
+
+</database>
