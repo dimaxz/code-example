@@ -10,6 +10,8 @@ return [
     [['POST'], '/api/v1/cities', [CityController::class, 'store']],
     [['PUT'], '/api/v1/cities/{id:\d+}', [CityController::class, 'update']],
     [['GET'], '/api/v1/cities/{id:\d+}', [CityController::class, 'show']],
+    [['GET'], '/api/v1/cities/{id:\d+}/sights', [CityController::class, 'showSights']],
+    [['GET'], '/api/v1/cities/{id:\d+}/travelers', [CityController::class, 'showTravelers']],
     [['DELETE'], '/api/v1/cities/{id:\d+}', [CityController::class, 'delete']],
 
     [['GET'], '/api/v1/sights', [SightController::class, 'index']],
@@ -22,6 +24,7 @@ return [
     [['POST'], '/api/v1/travelers', [TravelerController::class, 'store']],
     [['PUT'], '/api/v1/travelers/{id:\d+}', [TravelerController::class, 'update']],
     [['GET'], '/api/v1/travelers/{id:\d+}', [TravelerController::class, 'show']],
+    [['GET'], '/api/v1/travelers/{id:\d+}/cities', [TravelerController::class, 'showCities']],
     [['DELETE'], '/api/v1/travelers/{id:\d+}', [TravelerController::class, 'delete']],
 
     [['GET'], '/[{more:.*}]', [HomeController::class, 'index']],

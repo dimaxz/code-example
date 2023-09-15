@@ -12,13 +12,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Traveler\Infrastructure\Models\City\City;
 use Traveler\Infrastructure\Models\City\CityQuery;
+use Traveler\Infrastructure\Models\Sight\SightQuery;
+use Traveler\Infrastructure\Models\Traveler\TravelerQuery;
 use Traveler\Presentation\Transformers\CityTransformer;
+use Traveler\Presentation\Transformers\SightTransformer;
+use Traveler\Presentation\Transformers\TravelerTransformer;
 
 class CityController extends RestController
 {
     public function __construct(Request $request,
                                 protected Manager $fractal,
-                                protected CityTransformer $cityTransformer)
+                                protected CityTransformer $cityTransformer,
+                                protected TravelerTransformer $travelerTransformer,
+                                protected SightTransformer $sightTransformer
+    )
     {
         parent::__construct($request);
     }
@@ -52,6 +59,52 @@ class CityController extends RestController
 
         return new JsonResponse($cities->toArray());
     }
+
+    public function showSights(array $args): JsonResponse
+    {
+        $id = $args['id'] ?? null;
+
+        if ($id) {
+            $res = CityQuery::create()->findOneById($id);
+        }
+
+        if (!$res) {
+            return new JsonResponse(null, Response::HTTP_NOT_FOUND);
+        }
+
+        $items = SightQuery::create()->filterBycityId($id)->find();
+
+
+        $items = new Collection($items, $this->sightTransformer);
+        $items = $this->fractal->createData($items);
+
+        return new JsonResponse($items->toArray());
+    }
+
+    public function showTravelers(array $args): JsonResponse
+    {
+        $id = $args['id'] ?? null;
+
+        if ($id) {
+            $res = CityQuery::create()->findOneById($id);
+        }
+
+        if (!$res) {
+            return new JsonResponse(null, Response::HTTP_NOT_FOUND);
+        }
+
+        $items = TravelerQuery::create()
+            ->useTravelersCitiesRelQuery()
+            ->filterByCityId($id)
+            ->endUse()
+            ->find();
+
+        $items = new Collection($items, $this->travelerTransformer);
+        $items = $this->fractal->createData($items);
+
+        return new JsonResponse($items->toArray());
+    }
+
 
     public function delete(array $args): JsonResponse
     {

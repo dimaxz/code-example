@@ -47,8 +47,8 @@
       <reference local="traveler_id" foreign="id"/>
     </foreign-key>
     <column name="city_id" type="INTEGER" primaryKey="true" />
-    <foreign-key foreignTable="cities">
-      <reference local="city_id" foreign="id"/>
+    <foreign-key foreignTable="cities" onDelete="CASCADE">
+      <reference local="city_id" foreign="id" onDelete="CASCADE"/>
     </foreign-key>
   </table>
 
