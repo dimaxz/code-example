@@ -1,81 +1,29 @@
-# example1
+Тестовое задание:
+Разработать Сервис оценок путешественниками достопримечательностей ( back-end часть ), который позволяет полноценно работать со всеми сущностями: манипулировать и получать выборки с различными фильтрами.
 
-пример работы Repository + DataMapper + Entity
+Сущности:
 
-# example2
+Достопримечательность:
+Название
+Удаленность от центра города
+Город:
+Название
+Путешественник:
+Имя
+Дополнительные запросы к сущностям для реализации:
 
-пример работы с моделью Propel2 в многослойной архитектуре Controller -> Service -> Repostitory -> Model
+достопримечательности в городе
+города, которые посетил путешественник
+путешественники побывавшие в городе
+дополнительные фильтры будут плюсом
+При выводе достопримечательности требуется указывать среднюю оценку, формируемую из оценок всех путешественников, так-же должна присутствовать фильтрация по средней оценке.
 
-# example3
+Основные требования к реализации:
 
-пример работы с моделью Propel2 в многослойной архитектуре без репозитория Controller -> Service -> Model
-
-# example4
-
-Пример луковой архитектуры с разделением на Presentation, Application, Domain, Infrastructure
-
-```
-  src/
-    | Presentation
-    |   | Controllers
-    |   |   | UserController.php    
-    | Application/
-    |   | Commands/
-    |   |   | Registration/
-    |   |   |   | RegistrationManager/
-    |   |   |   | RegistrationUser/
-    |   |   |   |    | RegistrationUserCommand.php
-    |   |   |   |    | RegistrationUserHandler.php
-    | Domain/
-    |   | User/
-    |   |   | Contracts/
-    |   |   |   | UserCriteriaInterface.php
-    |   |   |   | UserRepositoryInterface.php       
-    |   |   | Exceptions/
-    |   |   | UserCollection.php
-    |   |   | UserEntity.php
-    |   |   | UserService.php
-    | Infrastructure
-    |   | Repositories
-    |   |   | User/
-    |   |   |   | UserCriteria.php
-    |   |   |   | UserRepository.php
-```    
-  
-# example5
-
-Пример луковой архитектуры с разделением на Presentation, Application, Domain, Infrastructure
-и группировкой бизнес логики
-```
-  src
-    | Presentation
-    |   | Controllers
-    |   |   | UserController.php
-    |   | Modules
-    |   | Views
-    | Application
-    |   | Office
-    |   |   | OfficeService.php
-    |   |   | RegistrationManager
-    |   |   | RegistrationUser
-    |   |   |    | RegistrationUserCommand.php
-    |   |   |    | RegistrationUserHandler.php
-    | Domain/
-    |   | User/
-    |   |   | Contracts
-    |   |   |   | UserCriteriaInterface.php
-    |   |   |   | UserRepositoryInterface.php       
-    |   |   | Exceptions
-    |   |   | UserCollection.php
-    |   |   | UserEntity.php
-    |   |   | UserService.php
-    | Infrastructure
-    |   | Repositories
-    |   |   | User
-    |   |   |   | UserCriteria.php
-    |   |   |   | UserRepository.php  
-```  
-##  phpmetrics
-```  
-$ ./vendor/bin/phpmetrics --report-html=./docs/myreport4 ./src/example4
-```
+ООП
+REST-full API
+Язык PHP 8.0+ (не просто номинальное использование, а применение возможностей этой версии языка)
+База данных на выбор
+Использование фреймворков:
+Запрещены «большие» фреймворки(Laravel,Yii и ect.)
+Разрешены «небольшие» фреймворки(для работы с базой или отстройки роутинга)

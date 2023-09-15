@@ -1,6 +1,0 @@
-{
-  "includes": [
-    "./src/example4"
-  ],
-  "extensions": [ "php" ]
-}
