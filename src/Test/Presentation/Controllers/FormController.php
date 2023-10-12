@@ -20,6 +20,7 @@ class FormController extends BaseController
 
         if($post){
             $this->productService->addProduct($post);
+            return $this->render('success');
         }
 
         return $this->render('form');
