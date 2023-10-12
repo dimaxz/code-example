@@ -1,7 +1,8 @@
 {
   "autoload": {
     "psr-4": {
-      "Traveler\\": "src/"
+      "Traveler\\": "src/",
+      "Test\\": "src/Test"
     }
   },
   "require": {

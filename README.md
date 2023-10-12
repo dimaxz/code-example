@@ -87,3 +87,7 @@ DELETE http://localhost:8080/api/v1/travelers/1
 ```
 http://localhost:8080/api/v1/travelers/1/cities
 ```
+
+
+1. форма создания покупки и числа
+2. вывод покупок
