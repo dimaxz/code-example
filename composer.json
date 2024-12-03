@@ -8,6 +8,6 @@
     "php": ">=7.2",
     "bornfreee/tactician-domain-events": "*",
     "league/tactician-command-events": "*",
-    "symfony/var-dumper": "5.*"
+    "symfony/var-dumper": "6.*"
   }
 }
